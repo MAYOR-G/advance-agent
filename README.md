@@ -1,1 +1,143 @@
-# &#129302; Advance Agent: Your AI-Powered Developer Tools Research Assistant\n\n![Python Version](https://img.shields.io/badge/python-3.11+-blue.svg)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n\nAn advanced, AI-powered command-line research agent that automates the process of finding and analyzing developer tools. Simply provide a query, and the agent will search for relevant companies, scrape their websites, and provide a detailed analysis and recommendation.\n\n## &#128640; Features\n\n*   **&#128269; Intelligent Search:** Utilizes Google\'s Gemini API to find the most relevant developer tool companies based on your query.\n*   **&#128214; Automated Web Scraping:** Uses Firecrawl to scrape the content of company websites for in-depth analysis.\n*   **&#129504; In-depth Analysis:** Leverages the power of LangGraph and Gemini to create a multi-step analysis workflow, extracting key information like tech stack, pricing, and integrations.\n*   **&#128172; Actionable Recommendations:** Provides a final summary and recommendation to help you choose the best tool for your needs.\n*   **&#128221; Extensible Workflow:** Built with LangGraph, the agent\'s workflow can be easily extended and customized.\n\n## &#129513; How It Works\n\nThe Advance Agent uses a three-step workflow orchestrated by LangGraph:\n\n1.  **Search:** The agent takes your query and uses the Gemini API to find a list of relevant developer tool companies and their websites.\n2.  **Scrape:** For each company found, the agent uses Firecrawl to scrape the content of their official website.\n3.  **Analyze:** The scraped content is then analyzed by the Gemini API to extract key information. A final analysis and recommendation are generated based on all the gathered data.\n\n```mermaid\ngraph TD\n    A[Start] --> B{User Query};\n    B --> C[Search for Companies];\n    C --> D[Scrape Websites];\n    D --> E[Analyze Content];\n    E --> F[Generate Recommendation];\n    F --> G[End];\n```\n\n## &#128736;&#65039; Technologies Used\n\n*   **[Python](https://www.python.org/)**\n*   **[LangChain](https://www.langchain.com/) & [LangGraph](https://langchain-ai.github.io/langgraph/)**\n*   **[Google Gemini](https://deepmind.google/technologies/gemini/)**\n*   **[Firecrawl](https://firecrawl.dev/)**\n*   **[Pydantic](https://pydantic-docs.helpmanual.io/)**\n\n## &#128229; Setup and Installation\n\n1.  **Clone the repository:**\n    ```bash\n    git clone https://github.com/your-username/advance-agent.git\n    cd advance-agent\n    ```\n\n2.  **Create and activate a virtual environment:**\n    ```bash\n    python -m venv .venv\n    .venv\\Scripts\\activate  # On Windows\n    # source .venv/bin/activate  # On macOS/Linux\n    ```\n\n3.  **Install the dependencies:**\n    ```bash\n    pip install -r requirements.txt # Assuming you have a requirements.txt, if not, create one from pyproject.toml\n    ```\n\n4.  **Create a `.env` file:**\n    Create a file named `.env` in the root directory of the project and add your API keys:\n    ```\n    GOOGLE_API_KEY=your-google-api-key\n    FIRECRAWL_API_KEY=your-firecrawl-api-key\n    ```\n    *   Get your Google API key from [Google AI Studio](https://aistudio.google.com/).\n    *   Get your Firecrawl API key from [Firecrawl](https://firecrawl.dev/).\n\n## &#128187; Usage\n\nRun the agent from the command line:\n\n```bash\npython main.py\n```\n\nThe agent will then prompt you for a query. Enter your query and press Enter to start the research process.\n\n**Example Query:**\n\n```\n\🔍 Developer Tools Query --->>: open source logging and monitoring tools\n```\n\nThe agent will then provide a detailed report on the companies it finds.\n\n## &#128211; Project Structure\n\n```\nadvance-agent/\n├── src/\n│   ├── __init__.py\n│   ├── nodes.py       # Defines the nodes in the LangGraph workflow\n│   ├── state.py       # Defines the application state\n│   └── workflow.py    # Defines the LangGraph workflow\n├── .env               # API keys and environment variables\n├── .gitignore\n├── main.py            # Main entry point for the application\n├── pyproject.toml     # Project metadata and dependencies\n├── README.md\n└── ...\n```\n\n## &#128101; Contributing\n\nContributions are welcome! Please feel free to open an issue or submit a pull request.\n\n1.  Fork the repository.\n2.  Create a new branch (`git checkout -b feature/your-feature`).\n3.  Make your changes.\n4.  Commit your changes (`git commit -m \'Add some feature\'`).\n5.  Push to the branch (`git push origin feature/your-feature`).\n6.  Open a pull request.\n\n## &#128220; License\n\nThis project is licensed under the MIT License. See the `LICENSE` file for more details.\n
+# 🔭 Advance Agent – Your AI‑Powered Developer‑Tools Research Assistant
+
+![Python Version](https://img.shields.io/badge/python-3.11%2B-blue.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+An advanced command‑line research agent that automates discovering and analysing the best developer tools for you.  
+Enter a query, and the agent will:
+
+1. Search the web for relevant companies.
+2. Scrape their official websites.
+3. Generate a detailed analysis and a clear recommendation.
+
+---
+
+## 🚀 Features
+
+| Icon | Feature | Description |
+|------|--------|-------------|
+| 🔎 | **Intelligent Search** | Uses Google Gemini to surface the most relevant tool companies. |
+| 📋 | **Automated Web Scraping** | Firecrawl fetches all publicly visible content from each company’s website. |
+| 📊 | **In‑Depth Analysis** | LangGraph + Gemini parse the scraped data to pull out tech stack, pricing, API integrations, and more. |
+| ✅ | **Actionable Recommendations** | Final digest summarises everything and suggests the best fit for your needs. |
+| 🛠️ | **Extensible Workflow** | Built on LangGraph – add new nodes or replace Gemini with another LLM with minimal effort. |
+
+---
+
+## 📖 How It Works
+
+The agent follows a three‑step workflow orchestrated by **LangGraph**:
+
+1. **Search** – Query Gemini for a list of companies matching the user’s request.  
+2. **Scrape** – Firecrawl crawls each company’s website, returning structured HTML/text.  
+3. **Analyze** – Gemini parses the data, extracts key facts, and produces a recommendation.
+
+```mermaid
+graph TD
+    A[Start] --> B{User Query}
+    B --> C[Search for Companies]
+    C --> D[Scrape Websites]
+    D --> E[Analyze Content]
+    E --> F[Generate Recommendation]
+    F --> G[End]
+```
+---
+## 🛠️ Technologies Used
+*   **Python**
+*   **LangChain & LangGraph** – Workflow orchestration
+*   **Google Gemini** – LLM for search & analysis
+*   **Firecrawl** – Web‑scraping engine
+*   **Pydantic** – Structured state management
+*(and the usual data‑science stack: pandas, numpy, etc.)*
+
+---
+
+## ⚙️ Setup and Installation
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/MAYOR-G/advance-agent.git
+cd advance-agent
+```
+### 2. Create & activate a virtual environment
+```bash
+python -m venv .venv
+```
+**Windows**
+```bash
+.venv\Scripts\activate
+```
+**macOS/Linux**
+```bash
+source .venv/bin/activate
+```
+### 3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+If you don’t have `requirements.txt`, generate one from `pyproject.toml`:
+```bash
+pip freeze > requirements.txt
+```
+### 4. Create a `.env` file
+```bash
+touch .env
+```
+Add your API keys:
+```
+GOOGLE_API_KEY=your-google-api-key
+FIRECRAWL_API_KEY=your-firecrawl-api-key
+```
+Get them from: [Google AI Studio](https://aistudio.google.com/) & [Firecrawl](https://firecrawl.dev/).
+
+---
+
+## 🚀 Usage
+Run the agent:
+```bash
+python main.py
+```
+The prompt will ask for a query. For example:
+```
+ Developer Tools Query --->>: open-source logging and monitoring tools
+```
+The agent will then:
+
+1.  Search for relevant companies
+2.  Scrape each site
+3.  Analyse the content
+4.  Display a concise report
+
+---
+
+## 📂 Project Structure
+```
+advance-agent/
+├── src/
+│   ├── __init__.py
+│   ├── nodes.py        # Defines LangGraph nodes
+│   ├── state.py        # Pydantic state schema
+│   └── workflow.py     # LangGraph workflow assembly
+├── .env                # API keys & env vars
+├── .gitignore
+├── main.py              # Entry point
+├── pyproject.toml      # Poetry / PDM config
+├── README.md
+└── ... (other assets)
+```
+---
+
+## 🤝 Contributing
+We welcome improvements! Follow these steps:
+
+1.  Fork the repo
+2.  Create a feature branch (`git checkout -b feature/your-feature`)
+3.  Commit your changes (`git commit -m "Add some feature"`)
+4.  Push to origin (`git push origin feature/your-feature`)
+5.  Open a pull request
+
+---
+
+## 📜 License
+MIT © mayor g
+
