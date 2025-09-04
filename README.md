@@ -10,8 +10,9 @@ Enter a query, and the agent will:
 2. Scrape their official websites.
 3. Generate a detailed analysis and a clear recommendation.
 
-https://github.com/user-attachments/assets/e8e43e1c-d642-4761-b8a3-92883fdde7ef
 ---
+
+https://github.com/user-attachments/assets/e8e43e1c-d642-4761-b8a3-92883fdde7ef
 
 ## 🚀 Features
 
